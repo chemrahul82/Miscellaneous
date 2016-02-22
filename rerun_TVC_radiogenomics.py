@@ -2,7 +2,7 @@
 re run TVC on all radiogenomics samples using the latest settings and also get full annovar annotations
 Author: Rahul K. Das
 Date: 02/19/2016
-How to run: nohup python radiogenomics_TVC_rerun.py -u > <nohup_1.out> 2>&1 &
+How to run: nohup python -u radiogenomics_TVC_rerun.py <startidx for sample list> >endidx for sample list> > <nohup_1.out> 2>&1 &
 
 """
 
@@ -15,7 +15,7 @@ sampleDirs = sorted([d for d in os.listdir(projDir) if (os.path.isdir(os.path.jo
 #print (sampleDirs)
 #time.sleep(60)
 def tvc_rerun(start, end):
-	for i in range(60,72):
+	for i in range(start,end):
 		print "Started TVC Rerun for %s" %sampleDirs[i]
 		if os.path.exists(os.path.join(projDir, sampleDirs[i], 'QC')):
  			qcDirs= [d for d in os.listdir(os.path.join(projDir, sampleDirs[i], 'QC')) if os.path.isdir(os.path.join(projDir, sampleDirs[i], 'QC', d))]
